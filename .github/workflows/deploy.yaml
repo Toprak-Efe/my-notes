@@ -37,8 +37,16 @@ jobs:
 
       # Step 3: Update the submodule to the latest commit
       - name: Update Submodule
-        run: git submodule update --remote --merge
-
+        run: |
+          # Go into the submodule's directory
+          cd content
+          # Fetch the latest changes from the remote
+          git fetch
+          # Forcefully reset the local submodule to match the remote's main branch
+          git reset --hard origin/main
+          # Go back to the parent directory
+          cd ..
+          
       # Step 4: Check for changes, then commit and push if there are any
       - name: Commit and Push if Changed
         run: |
