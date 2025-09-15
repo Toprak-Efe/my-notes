@@ -24,7 +24,7 @@ jobs:
     steps:
       # Step 1: Checkout the my-notes repo with its submodule
       - name: Checkout code with submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: 'recursive'
           token: ${{ secrets.GITHUB_TOKEN }} # Use GITHUB_TOKEN for push access
@@ -61,7 +61,7 @@ jobs:
 
       # Step 5: Setup Node.js to build the site
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
 
@@ -73,7 +73,7 @@ jobs:
 
       # Step 7: Upload the built site as a GitHub Pages artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: public
 
